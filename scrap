@@ -1,0 +1,52 @@
+    // ------------------------------------------------------
+    // simple commentBox in JSX
+    // ------------------------------------------------------
+      var CommentBoxSimple = React.createClass({
+        render: function() {
+          return (
+            <div className="commentBox1">
+              Hello, world! I am a CommentBox.
+            </div>
+          );
+        }
+      });
+      React.render(
+        <CommentBoxSimple />,
+        document.getElementById('content')
+      );
+    // ------------------------------------------------------
+    // simple commentBox in vanilla JS
+    // ------------------------------------------------------
+      var CommentBoxSimpleVanilla = React.createClass({
+        displayName: 'CommentBox',
+        render: function() {
+          return (
+            React.createElement('div', {className: "commentBox2"},
+              "Hello, world! I am a CommentBox."
+            )
+          );
+        }
+      });
+      React.render(
+        React.createElement(CommentBoxSimpleVanilla, null),
+        document.getElementById('content')
+      );
+
+
+
+  (sablono/html
+    [:div "test"]))
+
+
+(sablono/defhtml CommentForm []
+  [:form.commentForm 
+    [:input {:type "text"}]
+    [:input {:type "text"}]
+    [:input {:type "submit"}]
+  ])
+
+
+
+
+
+
