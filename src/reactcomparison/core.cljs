@@ -87,8 +87,8 @@
 
 (sablono/defhtml CommentForm [url]
   [:form.commentForm 
-    [:input {:type "text"}]
-    [:input {:type "text"}]
+    [:input {:type "text" :placeholder "Your name"}]
+    [:input {:type "text" :placeholder "Say something..."}]
     [:input 
       ; {:on-click (I-need-a-defn the-atom)
        {:type "submit"}]
@@ -99,7 +99,6 @@
 (sablono/defhtml CommentList [the-atom]
   [:div.commentList
     (doall (map Comment @the-atom))
-    (CommentForm)
   ]
 )
 
@@ -107,6 +106,7 @@
   [:div.CommentBox.example
     [:h1 "Comments CLJS version"]
     (CommentList the-atom)
+    (CommentForm)
   ]
 )
 
