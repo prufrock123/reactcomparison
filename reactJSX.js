@@ -15,7 +15,7 @@
         },
 
         componentDidMount: function() {
-          setInterval(this.setMyState, this.props.setMyInterval);
+          setInterval(this.setMyState, 50);
         },
 
         render: function() {
@@ -28,7 +28,87 @@
         }
       });
 
+      var CustomTimeCounter = React.createClass({
 
+        startTime: new Date().getTime(),
+
+        getInitialState: function() {
+          return {newTime: new Date().getTime()};
+        },
+
+        setMyState: function() {
+          this.setState({newTime: new Date().getTime()});
+        },
+
+        componentDidMount: function() {
+          setInterval(this.setMyState, 50);
+        },
+
+        timeUnitCheck: function(timeUnitType) {
+          var valueToCheck = (timeUnitType.slice(-1) !== "s") ?
+                             timeUnitType.toLowerCase() :
+                             timeUnitType.slice(-1).toLowerCase;
+          switch (valueToCheck) {
+            case "millisecond":
+
+            case "centisecond":
+
+            case "decisecond":
+          }
+        },
+
+        render: function() {
+          var timeConverted = this.timeUnitCheck(this.props.timeUnit);
+          var milliseconds = (this.state.newTime - this.startTime);
+          // var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+          var message =
+            'React has been successfully running for ' + timeConverted + this.props.timeUnit + "s";
+          return (
+            <div>
+              <p>{message}</p>
+              <p>{this.props.timeUnit}</p>
+            </div>
+          )
+        }
+      });
+
+      var TimeCounterForm = React.createClass({
+        handleInput: function(e) {
+          e.preventDefault();
+          var inputValue = this.refs.interval.getDOMNode().value.trim();
+          if (!inputValue) {
+            return;
+          }
+          this.props.onFormInput({inputValue})
+        },
+
+        render: function() {
+          return (
+            <input type="text" placeholder="enter a millisecond interval" ref="interval" onChange={this.handleInput} />
+          )
+        }
+      })
+
+      var TimeCounterContainer = React.createClass({
+        
+        getInitialState: function() {
+          return {timeUnit: "minutes"};
+        },
+
+        updateTheIntervalState: function(value) {
+          this.setState({timeUnit: value});
+        },
+
+        render: function() {
+          return (
+            <div>
+              <TimeCounter />
+              <CustomTimeCounter timeUnit={this.state.timeUnit} />
+              <TimeCounterForm onFormInput={this.updateTheIntervalState} />
+            </div>
+           )
+        }
+      })
 
 //------------------------------------------------------------------------------
 // Comment Component
@@ -349,7 +429,7 @@
             <HeaderExample />
             <LikeButton />
             <TabsExample tabData={tabData} />
-            <TimeCounter setMyInterval={50} />
+            <TimeCounterContainer />
           </div>
         );
       }
