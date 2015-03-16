@@ -166,23 +166,23 @@
        ]
 })
 
-(def tab-state-atom (atom
-  {:active-tab "managers"}))
+; (def tab-state-atom (atom
+;   {:active-tab "managers"}))
 
 
 (sablono/defhtml Tabs [active-tab]
   [:ul.tabs
     [:li#managers
       {:class (str "tab" (when (= active-tab "managers") " active"))
-       :on-click #(swap! tab-state-atom assoc :active-tab "managers")}
+       :on-click #(swap! application-state-atom assoc :active-tab "managers")}
       [:a.tab-link {:href "#managers"} "Managers"]]
     [:li#designers 
       {:class (str "tab" (when (=  active-tab "designers") " active"))
-       :on-click #(swap! tab-state-atom assoc :active-tab "designers")}
+       :on-click #(swap! application-state-atom assoc :active-tab "designers")}
       [:a.tab-link {:href "#designers"} "Designers"]]
     [:li#developers
       {:class (str "tab" (when (=  active-tab "developers") " active"))
-       :on-click #(swap! tab-state-atom assoc :active-tab "developers")}
+       :on-click #(swap! application-state-atom assoc :active-tab "developers")}
         [:a.tab-link {:href "#developers"} "Developers"]]])
 
 (sablono/defhtml TabList [active-tab]
@@ -195,11 +195,113 @@
       [:img {:src "http://www.gravatar.com/avatar/47?f=y&amp;s=64&amp;d=identicon"}]
       (:dude data) [:span " Followers: "(:followers data)]]])
 
+
 (sablono/defhtml TabsExample [state]
   [:div.tabsExample
     (Tabs (:active-tab state)) 
     (TabList (:active-tab state))
     ])  
+
+;;------------------------------------------------------------------------------
+;; Simple LikeButton Component
+;;------------------------------------------------------------------------------
+
+  (defn- click-like [e]
+    (let [liked? (:liked @application-state-atom)]
+     (swap! application-state-atom assoc :liked (not liked?))))
+
+  (quiescent/defcomponent LikeButton [state]
+    (sablono/html
+      [:p {:onClick #(click-like %)}
+        (str "You "(if (true? (:liked state)) "like " "haven't liked ")"this")]))
+
+
+;;------------------------------------------------------------------------------
+;; Temp Calculator
+;;------------------------------------------------------------------------------
+
+  ;;----------------------------------------------------------------------------
+  ;; Temp Conversions
+  ;;----------------------------------------------------------------------------
+
+  ;; Fahrenheit
+  (defn F->C [tf]
+    (* (/ 5 9) (- tf 32)))
+
+  (defn F->K [tf]
+    (+ (/ (- tf 32) 1.8) 273.15))
+
+  ;; Celsius
+  (defn C->F [tc]
+    (+ (* (/ 9 5) tc) 32))
+
+  (defn C->K [tc]
+    (+ 273.15 tc))
+
+  ;; Kelvin
+  (defn K->C [tk]
+    (- tk 273.15))
+
+  (defn K->F [tk]
+    (+ (* (- tk 273.15) 1.8) 32))
+
+  (defn convert-temps
+    "Given a keyword 'kwd' of :C, :F, or :K, returns a map of temperature 'v' for all temperature formats."
+    [kwd v]
+    (case kwd
+      :C {:C v
+          :F (C->F v)
+          :K (C->K v)}
+      :F {:F v
+          :C (F->C v)
+          :K (F->K v)}
+      :K {:K v
+          :F (K->F v)
+          :C (K->C v)}))
+
+  ;;----------------------------------------------------------------------------
+  ;; React Events
+  ;;----------------------------------------------------------------------------
+
+  (defn- on-change-input [temp-kwd js-evt]
+    (let [new-value1 (js/parseFloat (aget js-evt "currentTarget" "value"))
+          new-value2 (if (js/isNaN new-value1) 0 new-value1)]
+      (swap! application-state-atom merge (convert-temps temp-kwd new-value2))))
+
+(quiescent/defcomponent TextInput [[temp-kwd v]]
+  (sablono/html
+    [:label (str (name temp-kwd) ": ")
+      [:input {:on-change #(on-change-input temp-kwd %)
+               :type "text"
+               :value v}]]))
+
+(quiescent/defcomponent RangeInput [[temp-kwd v]]
+  (sablono/html
+    [:label (str (name temp-kwd) ": ")
+      [:input {:min (if (= temp-kwd :K) 0 -450)
+               :max 1000
+               :type "range"
+               :on-change #(on-change-input temp-kwd %)
+               :value v}]]))
+
+
+(quiescent/defcomponent TempCalcForm [temps]
+  (sablono/html
+    [:div
+      [:fieldset
+        (TextInput [:C (:C temps)])
+        (TextInput [:F (:F temps)])
+        (TextInput [:K (:K temps)])]
+      [:fieldset
+        (RangeInput [:C (:C temps)])
+        (RangeInput [:F (:F temps)])
+        (RangeInput [:K (:K temps)])
+        ]]))
+
+(quiescent/defcomponent TempCalcContainer [state]
+  (sablono/html
+    [:div
+      (TempCalcForm state)]))
 
 
 ;;------------------------------------------------------------------------------
@@ -212,7 +314,18 @@
       (CommentBox commentData)
       (DivExample)
       (HeaderExample)
-      (TabsExample state)]))
+      (LikeButton state)
+      (TabsExample state)
+      (TempCalcContainer state)]))
+
+
+;;------------------------------------------------------------------------------
+;; The Application State Atom
+;;------------------------------------------------------------------------------
+
+(def application-state-atom (atom
+  (merge {:active-tab "managers"
+          :liked false} (convert-temps :C 0))))
 
 ;;------------------------------------------------------------------------------
 ;; Render
@@ -223,10 +336,10 @@
 (defn- on-change-state [_keyword the-atom old-state new-state]
   (quiescent/render (RootComponent new-state) container-el))
 
-(add-watch tab-state-atom :tab-change on-change-state)
+(add-watch application-state-atom :atom-change on-change-state)
 
 ;; trigger the first render
-(swap! tab-state-atom identity)
+(swap! application-state-atom identity)
 
 
 
