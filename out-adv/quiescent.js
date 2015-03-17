@@ -9,58 +9,58 @@ goog.require('cljs.core');
 */
 quiescent.js_props = (function js_props(obj){
 if(cljs.core.map_QMARK_(obj)){
-var o = (function (){var obj25178 = {};
-return obj25178;
+var o = (function (){var obj25011 = {};
+return obj25011;
 })();
-var seq__25179_25185 = cljs.core.seq(obj);
-var chunk__25180_25186 = null;
-var count__25181_25187 = (0);
-var i__25182_25188 = (0);
+var seq__25012_25018 = cljs.core.seq(obj);
+var chunk__25013_25019 = null;
+var count__25014_25020 = (0);
+var i__25015_25021 = (0);
 while(true){
-if((i__25182_25188 < count__25181_25187)){
-var vec__25183_25189 = chunk__25180_25186.cljs$core$IIndexed$_nth$arity$2(null,i__25182_25188);
-var k_25190 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25183_25189,(0),null);
-var v_25191 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25183_25189,(1),null);
-(o[cljs.core.name(k_25190)] = js_props(v_25191));
+if((i__25015_25021 < count__25014_25020)){
+var vec__25016_25022 = chunk__25013_25019.cljs$core$IIndexed$_nth$arity$2(null,i__25015_25021);
+var k_25023 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25016_25022,(0),null);
+var v_25024 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25016_25022,(1),null);
+(o[cljs.core.name(k_25023)] = js_props(v_25024));
 
-var G__25192 = seq__25179_25185;
-var G__25193 = chunk__25180_25186;
-var G__25194 = count__25181_25187;
-var G__25195 = (i__25182_25188 + (1));
-seq__25179_25185 = G__25192;
-chunk__25180_25186 = G__25193;
-count__25181_25187 = G__25194;
-i__25182_25188 = G__25195;
+var G__25025 = seq__25012_25018;
+var G__25026 = chunk__25013_25019;
+var G__25027 = count__25014_25020;
+var G__25028 = (i__25015_25021 + (1));
+seq__25012_25018 = G__25025;
+chunk__25013_25019 = G__25026;
+count__25014_25020 = G__25027;
+i__25015_25021 = G__25028;
 continue;
 } else {
-var temp__4126__auto___25196 = cljs.core.seq(seq__25179_25185);
-if(temp__4126__auto___25196){
-var seq__25179_25197__$1 = temp__4126__auto___25196;
-if(cljs.core.chunked_seq_QMARK_(seq__25179_25197__$1)){
-var c__4559__auto___25198 = cljs.core.chunk_first(seq__25179_25197__$1);
-var G__25199 = cljs.core.chunk_rest(seq__25179_25197__$1);
-var G__25200 = c__4559__auto___25198;
-var G__25201 = cljs.core.count(c__4559__auto___25198);
-var G__25202 = (0);
-seq__25179_25185 = G__25199;
-chunk__25180_25186 = G__25200;
-count__25181_25187 = G__25201;
-i__25182_25188 = G__25202;
+var temp__4126__auto___25029 = cljs.core.seq(seq__25012_25018);
+if(temp__4126__auto___25029){
+var seq__25012_25030__$1 = temp__4126__auto___25029;
+if(cljs.core.chunked_seq_QMARK_(seq__25012_25030__$1)){
+var c__4559__auto___25031 = cljs.core.chunk_first(seq__25012_25030__$1);
+var G__25032 = cljs.core.chunk_rest(seq__25012_25030__$1);
+var G__25033 = c__4559__auto___25031;
+var G__25034 = cljs.core.count(c__4559__auto___25031);
+var G__25035 = (0);
+seq__25012_25018 = G__25032;
+chunk__25013_25019 = G__25033;
+count__25014_25020 = G__25034;
+i__25015_25021 = G__25035;
 continue;
 } else {
-var vec__25184_25203 = cljs.core.first(seq__25179_25197__$1);
-var k_25204 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25184_25203,(0),null);
-var v_25205 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25184_25203,(1),null);
-(o[cljs.core.name(k_25204)] = js_props(v_25205));
+var vec__25017_25036 = cljs.core.first(seq__25012_25030__$1);
+var k_25037 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25017_25036,(0),null);
+var v_25038 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25017_25036,(1),null);
+(o[cljs.core.name(k_25037)] = js_props(v_25038));
 
-var G__25206 = cljs.core.next(seq__25179_25197__$1);
-var G__25207 = null;
-var G__25208 = (0);
-var G__25209 = (0);
-seq__25179_25185 = G__25206;
-chunk__25180_25186 = G__25207;
-count__25181_25187 = G__25208;
-i__25182_25188 = G__25209;
+var G__25039 = cljs.core.next(seq__25012_25030__$1);
+var G__25040 = null;
+var G__25041 = (0);
+var G__25042 = (0);
+seq__25012_25018 = G__25039;
+chunk__25013_25019 = G__25040;
+count__25014_25020 = G__25041;
+i__25015_25021 = G__25042;
 continue;
 }
 } else {
@@ -94,37 +94,37 @@ quiescent._STAR_component_STAR_ = null;
 quiescent.component = (function component(renderer){
 var react_component = React.createClass({"render": (function (){
 var this$ = this;
-var _STAR_component_STAR_25212 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25045 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
 try{return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(renderer,(this$.props["value"]),(this$.props["statics"]));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25212;
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25045;
 }}), "shouldComponentUpdate": (function (next_props,_){
 var this$ = this;
 return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2((this$.props["value"]),(next_props["value"]));
 })});
 return ((function (react_component){
 return (function() { 
-var G__25214__delegate = function (value,static_args){
-var G__25213 = {"statics": static_args, "value": value};
-return (react_component.cljs$core$IFn$_invoke$arity$1 ? react_component.cljs$core$IFn$_invoke$arity$1(G__25213) : react_component.call(null,G__25213));
+var G__25047__delegate = function (value,static_args){
+var G__25046 = {"statics": static_args, "value": value};
+return (react_component.cljs$core$IFn$_invoke$arity$1 ? react_component.cljs$core$IFn$_invoke$arity$1(G__25046) : react_component.call(null,G__25046));
 };
-var G__25214 = function (value,var_args){
+var G__25047 = function (value,var_args){
 var static_args = null;
 if (arguments.length > 1) {
-var G__25215__i = 0, G__25215__a = new Array(arguments.length -  1);
-while (G__25215__i < G__25215__a.length) {G__25215__a[G__25215__i] = arguments[G__25215__i + 1]; ++G__25215__i;}
-  static_args = new cljs.core.IndexedSeq(G__25215__a,0);
+var G__25048__i = 0, G__25048__a = new Array(arguments.length -  1);
+while (G__25048__i < G__25048__a.length) {G__25048__a[G__25048__i] = arguments[G__25048__i + 1]; ++G__25048__i;}
+  static_args = new cljs.core.IndexedSeq(G__25048__a,0);
 } 
-return G__25214__delegate.call(this,value,static_args);};
-G__25214.cljs$lang$maxFixedArity = 1;
-G__25214.cljs$lang$applyTo = (function (arglist__25216){
-var value = cljs.core.first(arglist__25216);
-var static_args = cljs.core.rest(arglist__25216);
-return G__25214__delegate(value,static_args);
+return G__25047__delegate.call(this,value,static_args);};
+G__25047.cljs$lang$maxFixedArity = 1;
+G__25047.cljs$lang$applyTo = (function (arglist__25049){
+var value = cljs.core.first(arglist__25049);
+var static_args = cljs.core.rest(arglist__25049);
+return G__25047__delegate(value,static_args);
 });
-G__25214.cljs$core$IFn$_invoke$arity$variadic = G__25214__delegate;
-return G__25214;
+G__25047.cljs$core$IFn$_invoke$arity$variadic = G__25047__delegate;
+return G__25047;
 })()
 ;
 ;})(react_component))
@@ -137,11 +137,11 @@ var this$ = this;
 var temp__4126__auto__ = (this$.props["onWillUnmount"]);
 if(cljs.core.truth_(temp__4126__auto__)){
 var f = temp__4126__auto__;
-var _STAR_component_STAR_25223 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25056 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
 try{return (f.cljs$core$IFn$_invoke$arity$0 ? f.cljs$core$IFn$_invoke$arity$0() : f.call(null));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25223;
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25056;
 }} else {
 return null;
 }
@@ -150,11 +150,11 @@ var this$ = this;
 var temp__4126__auto__ = (this$.props["onWillUpdate"]);
 if(cljs.core.truth_(temp__4126__auto__)){
 var f = temp__4126__auto__;
-var _STAR_component_STAR_25222 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25055 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
 try{return (f.cljs$core$IFn$_invoke$arity$0 ? f.cljs$core$IFn$_invoke$arity$0() : f.call(null));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25222;
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25055;
 }} else {
 return null;
 }
@@ -163,11 +163,11 @@ var this$ = this;
 var temp__4126__auto__ = (this$.props["onWillMount"]);
 if(cljs.core.truth_(temp__4126__auto__)){
 var f = temp__4126__auto__;
-var _STAR_component_STAR_25221 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25054 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
 try{return (f.cljs$core$IFn$_invoke$arity$0 ? f.cljs$core$IFn$_invoke$arity$0() : f.call(null));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25221;
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25054;
 }} else {
 return null;
 }
@@ -176,12 +176,12 @@ var this$ = this;
 var temp__4126__auto__ = (this$.props["onMount"]);
 if(cljs.core.truth_(temp__4126__auto__)){
 var f = temp__4126__auto__;
-var _STAR_component_STAR_25219 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25052 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
-try{var G__25220 = this$.getDOMNode();
-return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__25220) : f.call(null,G__25220));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25219;
+try{var G__25053 = this$.getDOMNode();
+return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__25053) : f.call(null,G__25053));
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25052;
 }} else {
 return null;
 }
@@ -190,12 +190,12 @@ var this$ = this;
 var temp__4126__auto__ = (this$.props["onUpdate"]);
 if(cljs.core.truth_(temp__4126__auto__)){
 var f = temp__4126__auto__;
-var _STAR_component_STAR_25217 = quiescent._STAR_component_STAR_;
+var _STAR_component_STAR_25050 = quiescent._STAR_component_STAR_;
 quiescent._STAR_component_STAR_ = this$;
 
-try{var G__25218 = this$.getDOMNode();
-return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__25218) : f.call(null,G__25218));
-}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25217;
+try{var G__25051 = this$.getDOMNode();
+return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__25051) : f.call(null,G__25051));
+}finally {quiescent._STAR_component_STAR_ = _STAR_component_STAR_25050;
 }} else {
 return null;
 }
@@ -221,29 +221,29 @@ return (this$.props["wrappee"]);
 */
 quiescent.wrapper = (function() { 
 var wrapper__delegate = function (child,kvs){
-var props = quiescent.js_props(cljs.core.apply.cljs$core$IFn$_invoke$arity$4(cljs.core.array_map,cljs.core.constant$keyword$148,child,kvs));
-var temp__4126__auto___25226 = (child.props["key"]);
-if(cljs.core.truth_(temp__4126__auto___25226)){
-var key_25227 = temp__4126__auto___25226;
-(props["key"] = key_25227);
+var props = quiescent.js_props(cljs.core.apply.cljs$core$IFn$_invoke$arity$4(cljs.core.array_map,cljs.core.constant$keyword$153,child,kvs));
+var temp__4126__auto___25059 = (child.props["key"]);
+if(cljs.core.truth_(temp__4126__auto___25059)){
+var key_25060 = temp__4126__auto___25059;
+(props["key"] = key_25060);
 } else {
 }
 
-var G__25225 = props;
-return (quiescent.WrapperComponent.cljs$core$IFn$_invoke$arity$1 ? quiescent.WrapperComponent.cljs$core$IFn$_invoke$arity$1(G__25225) : quiescent.WrapperComponent.call(null,G__25225));
+var G__25058 = props;
+return (quiescent.WrapperComponent.cljs$core$IFn$_invoke$arity$1 ? quiescent.WrapperComponent.cljs$core$IFn$_invoke$arity$1(G__25058) : quiescent.WrapperComponent.call(null,G__25058));
 };
 var wrapper = function (child,var_args){
 var kvs = null;
 if (arguments.length > 1) {
-var G__25228__i = 0, G__25228__a = new Array(arguments.length -  1);
-while (G__25228__i < G__25228__a.length) {G__25228__a[G__25228__i] = arguments[G__25228__i + 1]; ++G__25228__i;}
-  kvs = new cljs.core.IndexedSeq(G__25228__a,0);
+var G__25061__i = 0, G__25061__a = new Array(arguments.length -  1);
+while (G__25061__i < G__25061__a.length) {G__25061__a[G__25061__i] = arguments[G__25061__i + 1]; ++G__25061__i;}
+  kvs = new cljs.core.IndexedSeq(G__25061__a,0);
 } 
 return wrapper__delegate.call(this,child,kvs);};
 wrapper.cljs$lang$maxFixedArity = 1;
-wrapper.cljs$lang$applyTo = (function (arglist__25229){
-var child = cljs.core.first(arglist__25229);
-var kvs = cljs.core.rest(arglist__25229);
+wrapper.cljs$lang$applyTo = (function (arglist__25062){
+var child = cljs.core.first(arglist__25062);
+var kvs = cljs.core.rest(arglist__25062);
 return wrapper__delegate(child,kvs);
 });
 wrapper.cljs$core$IFn$_invoke$arity$variadic = wrapper__delegate;
@@ -257,7 +257,7 @@ return wrapper;
 * The function will be passed the rendered DOM node.
 */
 quiescent.on_update = (function on_update(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$149,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$154,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -266,7 +266,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be passed the rendered DOM node.
 */
 quiescent.on_mount = (function on_mount(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$150,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$155,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -275,7 +275,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be passed the rendered DOM node.
 */
 quiescent.on_render = (function on_render(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$150,f,cljs.core.constant$keyword$149,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$155,f,cljs.core.constant$keyword$154,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -284,7 +284,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be called with no arguments.
 */
 quiescent.on_will_mount = (function on_will_mount(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$151,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$156,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -293,7 +293,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be called with no arguments.
 */
 quiescent.on_will_update = (function on_will_update(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$152,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$157,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -302,7 +302,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be called with no arguments.
 */
 quiescent.on_will_render = (function on_will_render(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$151,f,cljs.core.constant$keyword$152,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$156,f,cljs.core.constant$keyword$157,f], 0));
 });
 /**
 * Wrap a component, specifying a function to be called on the
@@ -311,7 +311,7 @@ return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.ar
 * The function will be called with no arguments.
 */
 quiescent.on_will_unmount = (function on_will_unmount(child,f){
-return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$153,f], 0));
+return quiescent.wrapper.cljs$core$IFn$_invoke$arity$variadic(child,cljs.core.array_seq([cljs.core.constant$keyword$158,f], 0));
 });
 /**
 * Given a ReactJS component, immediately render it, rooted to the

@@ -463,6 +463,7 @@
           <LikeButton />
           <TabsExample tabData={tabData} />
           <TimeCounterContainer />
+          <pre className="prettyprint">var testing = 'prettyprint'</pre>
         </div>
       );
     }
