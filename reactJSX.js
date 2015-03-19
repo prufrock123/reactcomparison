@@ -308,30 +308,25 @@
 // Simple LikeButton Component
 //------------------------------------------------------------------------------
 
-var LikeButton = React.createClass({
-    getInitialState: function() {
-      return {liked: false};
-    },
-    handleClick: function(event) {
-      this.setState({liked: !this.state.liked});
-    },
-    render: function() {
-      var test = LikeButton
-      var text = this.state.liked ? 'like' : 'haven\'t liked';
-      return (
-        <div>
-          <pre><code className="language-jsx" id="test">
-            {test};
-          </code></pre>
-          <p onClick={this.handleClick}>
-            You {text} this. Click to toggle.
-          </p>
-        </div>
-      );
-    }
-  });
+// var LikeButton = React.createClass({
+//     getInitialState: function() {
+//       return {liked: false};
+//     },
+//     handleClick: function(event) {
+//       this.setState({liked: !this.state.liked});
+//     },
+//     render: function() {
+//       var test = LikeButton
+//       var text = this.state.liked ? 'like' : 'haven\'t liked';
+//       return (
+//           <p onClick={this.handleClick}>
+//             You {text} this. Click to toggle.
+//           </p>
+//       );
+//     }
+//   });
 
-// var LikeButton = new Function($('#test').text());
+
 
 
 
@@ -461,13 +456,46 @@ var LikeButton = React.createClass({
 // Root Component
 //------------------------------------------------------------------------------
 
+var testObject = {
+
+  willBeLikeButton: function() {
+    return React.createClass({
+            getInitialState: function() {
+              return {liked: false};
+            },
+            handleClick: function(event) {
+              this.setState({liked: !this.state.liked});
+            },
+            render: function() {
+              var text = this.state.liked ? 'like' : 'haven\'t liked';
+              return (
+                  <p onClick={this.handleClick}>
+                    You {text} this. Click to toggle.
+                  </p>
+              );
+            }
+          })
+  },
+
+  willBeSnippet: function() {
+    return String(this.willBeLikeButton);
+  }
+
+
+        
+}
+
+var LikeButton = this.testObject.willBeLikeButton();
+
+
 
   var RootComponent = React.createClass({
     render: function() {
-      console.log(LikeButton);
-      console.dir(test.innerText)
-      var maybe = test.innerHTML
-      var hope = Prism.highlight(test.innerText, Prism.languages.jsx);
+
+      var iBelieve = String('var LikeButton = ' + testObject.willBeLikeButton.valueOf())
+      var maybe = test.innerText
+      // var hope = Prism.highlight(test.innerText, Prism.languages.jsx);
+      var hope = Prism.highlight(iBelieve, Prism.languages.jsx);
 
 
       function createMarkup() {
@@ -479,7 +507,7 @@ var LikeButton = React.createClass({
           <DivExample />
           <HeaderExample />
           <LikeButton />
-          <pre className="language-jsx"><code className="language-jsx" id="reactHighlight" dangerouslySetInnerHTML={{__html: maybe}}></code></pre>
+          <pre className="language-jsx"><code className="language-jsx" id="reactHighlight" dangerouslySetInnerHTML={{__html: hope}}></code></pre>
     
           <TabsExample tabData={tabData} />
           <TimeCounterContainer />
@@ -568,7 +596,22 @@ var LikeButton = React.createClass({
 
 
 
-
+  // willBeLikeButton:  "React.createClass({" + "\n" +
+  //           "getInitialState: function() {" + "\n" +
+  //             "return {liked: false};" + "\n" +
+  //           "}," + "\n" +
+  //           "handleClick: function(event) {" + "\n" +
+  //             "this.setState({liked: !this.state.liked});" + "\n" +
+  //           "}," + "\n" +
+  //           "render: function() {" + "\n" +
+  //             "var text = this.state.liked ? 'like' : 'haven\'t liked';" + "\n" +
+  //             "return (" + "\n" +
+  //                 "<p onClick={this.handleClick}>" + "\n" +
+  //                   "You {text} this. Click to toggle." + "\n" +
+  //                 "</p>" + "\n" +
+  //             ");" + "\n" +
+  //           "}" + "\n" +
+  //         "})" 
 
 
 
