@@ -308,7 +308,7 @@
 // Simple LikeButton Component
 //------------------------------------------------------------------------------
 
-  var LikeButton = React.createClass({
+var LikeButton = React.createClass({
     getInitialState: function() {
       return {liked: false};
     },
@@ -316,14 +316,23 @@
       this.setState({liked: !this.state.liked});
     },
     render: function() {
+      var test = LikeButton
       var text = this.state.liked ? 'like' : 'haven\'t liked';
       return (
-        <p onClick={this.handleClick}>
-          You {text} this. Click to toggle.
-        </p>
+        <div>
+          <pre><code className="language-jsx" id="test">
+            {test};
+          </code></pre>
+          <p onClick={this.handleClick}>
+            You {text} this. Click to toggle.
+          </p>
+        </div>
       );
     }
   });
+
+// var LikeButton = new Function($('#test').text());
+
 
 
 //------------------------------------------------------------------------------
@@ -455,12 +464,23 @@
 
   var RootComponent = React.createClass({
     render: function() {
+      console.log(LikeButton);
+      console.dir(test.innerText)
+      var maybe = test.innerHTML
+      var hope = Prism.highlight(test.innerText, Prism.languages.jsx);
+
+
+      function createMarkup() {
+        return {__html: <script> maybe </script>};
+      };
       return (
         <div>
           <CommentBox url="comments.json" pollInterval={2000} />
           <DivExample />
           <HeaderExample />
           <LikeButton />
+          <pre className="language-jsx"><code className="language-jsx" id="reactHighlight" dangerouslySetInnerHTML={{__html: maybe}}></code></pre>
+    
           <TabsExample tabData={tabData} />
           <TimeCounterContainer />
           <pre className="prettyprint">var testing = 'prettyprint'</pre>
@@ -486,10 +506,53 @@
 
 
 
+// var codeSnip = function() {
+//   $('#codeSnip').append(
+//     "<code class='language-jsx'>
+//       var LikeButton = React.createClass({
+//         getInitialState: function() {
+//           return {liked: false};
+//         },
+//         handleClick: function(event) {
+//           this.setState({liked: !this.state.liked});
+//         },
+//         render: function() {
+//           var text = this.state.liked ? 'like' : 'haven\'t liked';
+//           return (
+//             <p onClick={this.handleClick}>
+//               You {text} this. Click to toggle.
+//             </p>
+//           );
+//         }
+//       });
+//     </code>"
+//   )
+// }
 
+// var codeSnip = function() {
+//   $('#codeSnip').html(
+//     "<code class='language-jsx'>" +
+//       "var LikeButton = React.createClass({" +
+//         "getInitialState: function() {" +
+//           "return {liked: false};" +
+//         "}," +
+//         "handleClick: function(event) {" +
+//           "this.setState({liked: !this.state.liked});" +
+//         "}," +
+//         "render: function() {" +
+//           "var text = this.state.liked ? 'like' : 'haven\'t liked';" +
+//           "return (" +
+//             "<p onClick={this.handleClick}>" +
+//               "You {text} this. Click to toggle." +
+//             "</p>" +
+//           ");" +
+//         "}" +
+//       "});" +
+//     "</code>"
+//   )
+// }
 
-
-
+// codeSnip();
 
 
 
