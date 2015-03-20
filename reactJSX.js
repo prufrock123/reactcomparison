@@ -258,7 +258,6 @@
     render: function() {
       return (
         <div className="commentBox example">
-          <h3>Comments</h3>
           <CommentList data={this.state.data} />
           <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         </div>
@@ -460,53 +459,57 @@
       var timeCounterSnippet = Prism.highlight(timeCounter.innerText, Prism.languages.jsx)
 
 
-
       return (
         <div>
-          <h1 className="title">JSX version</h1>
-          <hr className="top"></hr>
-          <CommentBox url="comments.json" pollInterval={2000} />
+  
+          <div className="componentJSX" id="commentComponent">
+            <hr/>
+            <h4>Comment Component</h4>          
+            <hr/>
+            <CommentBox url="comments.json" pollInterval={2000} />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: commentSnippet}}></code></pre>
+          </div>
           
-          <hr ></hr>
-          <h4>Comment Component</h4>          
-          <hr/>
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: commentSnippet}}></code></pre>
-          
-          
-          <hr ></hr>
-          <h4>Simple Div Component</h4>
-          <hr/>
-          <DivExample />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: simpleDivSnippet}}></code></pre>
-          
-          
-          <hr ></hr>
-          <h4>Header Component</h4>
-          <hr/>
-          <HeaderExample />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: headersSnippet}}></code></pre>
-          
-          
-          <hr ></hr>
-          <h4>Like Button Component</h4>
-          <hr/>
-          <LikeButton />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: likeButtonSnippet}}></code></pre>
-                    
-            
-          <hr ></hr>
-          <h4>Tab Component</h4>  
-          <hr/>
-          <TabsExample tabData={tabData} />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: tabsSnippet}}></code></pre>
-          
-          
-          <hr ></hr>
-          <h4>Counter Component</h4>
-          <hr/>
-          <TimeCounterContainer />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: timeCounterSnippet}}></code></pre>
-                    
+          <div className="componentJSX" id="simpleDivComponent">
+            <hr/>
+            <h4>Simple Div Component</h4>
+            <hr/>
+            <DivExample />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: simpleDivSnippet}}></code></pre>
+          </div>
+
+          <div className="componentJSX" id="headerComponent">
+            <hr/>
+            <h4>Header Component</h4>
+            <hr/>
+            <HeaderExample />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: headersSnippet}}></code></pre>
+          </div>
+
+          <div className="componentJSX" id="likeButtonComponent">
+            <hr/>
+            <h4>Like Button Component</h4>
+            <hr/>
+            <LikeButton />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: likeButtonSnippet}}></code></pre>
+          </div>    
+
+          <div className="componentJSX" id="tabComponent">
+            <hr/>
+            <h4>Tab Component</h4>  
+            <hr/>
+            <TabsExample tabData={tabData} />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: tabsSnippet}}></code></pre>
+          </div>
+
+          <div className="componentJSX" id="counterComponent">
+            <hr/>
+            <h4>Counter Component</h4>
+            <hr/>
+            <TimeCounterContainer />
+            <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: timeCounterSnippet}}></code></pre>
+          </div>
+
 
         </div>
       );

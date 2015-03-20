@@ -1,195 +1,291 @@
-body {
-  background-color: snow;
-  /*font-family: 'Forum', cursive;*/
-  /*font-family: 'Comfortaa', cursive;*/
-  font-family: 'PT Sans Caption', sans-serif;
-}
+/* UTILITY CLASSES */
 
-h1.title {
-  margin-top: 5%;
-  background-color: sienna;
-  padding: 6%;
-  color: snow;
-}
+  .hide {
+    display: none;
+  }
 
-.rootComponent {
-    display: inline-block;
-    width: 47%;
-    text-align: center;
-    vertical-align: top;
-}
-
-.rootComponent > * {
-  text-align: left;
-}
-
-.rootComponent > div {
-  text-align: center;
-}
-
-.tabsExample {
-  text-align: left;
-}
-
-/*.example::after {
-    content: "";
-    border-bottom: 2px solid black;
-    width: 100%;
-    height: 2px;
-    display: inline-block;
-}
-*/
-.tabsExample {
-  position: relative;
-  margin: 40px auto;
-  width: 70%;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
-}
-
-.tabs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 9px 12px 0;
-  text-align: center;
-  /*direction: rtl;*/
-  background: #f5f5f5;
-  border-bottom: 1px solid #ddd;
-  border-radius: 3px 3px 0 0;
-}
-
-.tab {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 3px;
-  line-height: 30px;
-  font-weight: normal;
-  color: #999;
-  background: #fcfcfc;
-  border: solid #ddd;
-  border-width: 1px 1px 0;
-  border-radius: 5px 5px 0 0;
-}
-
-.tab:active {
-  padding-bottom: 0;
-  bottom: auto;
-}
-
-.tab + .tab {
-  margin-right: -1px;
-}
-
-.tab.active {
-  bottom: -1px;
-  margin-top: -2px;
-  padding-bottom: 2px;
-  line-height: 34px;
-  font-weight: bold;
-  color: #555;
-  background: white;
-  border-top: solid #4cc8f1 3px;
-}
-
-
-.tab-link {
-  display: block;
-  min-width: 60px;
-  padding: 0 10px;
-  color: inherit;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 4px 4px 0 0;
-}
-
-.tabList {
-  display: block;
-  padding-top: 46px;
-}
-
-.tablist.active {
-  display: block;
-}
-
-/*.tabList:last-of-type {
-  display: block;
-}*/
-
-.tabList.active {
-  display: block;
-}
-
-.tabList li {
-  border-top: 1px solid #e8e8e8;
-  list-style-type: none;
-}
-
-.hiddenCode {
-  display: none;
-}
-
-pre {
-  margin: 0 auto !important;
-  margin-bottom: 10% !important;
-  cursor: pointer;
-  font-size: .85em;
-  width: 500px;
-  max-height: 400px;
-  transition: max-height 2s ease, width 1s ease;
-}
-
-pre.expanded {
-  width: 100%;
-  max-height: 2000px;
-}
-
-hr {
-    border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-hr.sectionTitle {
-    height: 30px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px 0 0 0;
-    border-radius: 20px;
-}
-hr.sectionTitle:before { /* Not really supposed to work, but does */
+  .show {
     display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
-}
+  }
 
-hr.top {
-    padding: 0;
-    border: none;
-    border-top: medium double #333;
-    color: #333;
-    text-align: center;
-    margin-bottom: 12%;
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+/* Dropdown Menu */
+
+  .container-dropdown {
+    /* Size and position */
+    position: relative; /* Enable absol. positioning for children & psuedo els */
+    width: 75%;
+    padding: 10px;
+    margin: 0 auto;
+
+    /* Styles */
+    background: #9bc7de;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+
+    /* Font settings */
+    font-weight: bold;
+  }
+
+  .container-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -6px;
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent #fff;
+  }
+
+  .container-dropdown .dropdown {
+    /* Size & Position */
+    position: absolute;
+    top: 62%;
+    left: 0; /* Size */
+    right: 0; /* Size */
+
+    /* Styles */
+    background: #fff;
+    font-weight: normal; /* Overwrites previous font-weight bold; */
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .5s ease;
+    z-index: 1;
+  }
+
+  .container-dropdown .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #9e9e9e;
+    padding: 10px 20px;
+  }
+
+  .container-dropdown .dropdown li:hover a {
+    background: #f3f8f8;
+  }
+
+  .container-dropdown.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .container-dropdown.active:after {
+    border-color: #9bc7de transparent;
+    border-width: 6px 6px 0 6px;
+    margin-top: -3px;
+  }
+
+  .container-dropdown.active {
+    background: #9bc7de;
+    background: linear-gradient(to right, #9bc7de 0%, #9bc7de 78%, #ffffff 78%, #ffffff 100%);
+  }
+
+/* Other Stuff. bad organization i know i'm ashamed but no time now. #deal */
+
+  body {
+    background-color: rgba(224, 224, 224, 0.3);
+    /*font-family: 'Forum', cursive; */
+    /*font-family: 'Comfortaa', cursive;*/
+    font-family: 'PT Sans Caption', sans-serif;
+  }
+
+  h1.title {
     margin-top: 5%;
-}
-hr.top:after {
-    content: "§";
-    display: inline-block;
+    margin-bottom: 10%;
+    /*background-color: sienna;*/
+    background-color: rgba(185, 62, 25, 0.8);
+    padding: 6%;
+    color: snow;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+
+  h1.title#header {
+/*  margin-bottom: 0;
+    margin-top: 0;*/
+    margin: 0 auto;
+    width: 75%;
+  }
+
+  .rootComponent {
+      display: inline-block;
+      width: 47%;
+      text-align: center;
+      vertical-align: top;
+  }
+
+  .rootComponent > * {
+    text-align: left;
+  }
+
+  .rootComponent > div {
+    text-align: center;
+  }
+
+  .componentJSX {
+    display: none;
+  }
+
+  .componentJSX.active {
+    display: block;
+  }
+
+  .componentCLJS {
+    display: none;
+  }
+
+  .componentCLJS.active {
+    display: block;
+  }
+
+  .tabsExample {
+    text-align: left;
+  }
+
+
+  .tabsExample {
     position: relative;
-    top: -0.7em;
-    font-size: 1.5em;
-    padding: 0 0.25em;
+    margin: 40px auto;
+    width: 70%;
     background: white;
-}
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
+  }
+
+  .tabs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 9px 12px 0;
+    text-align: center;
+    /*direction: rtl;*/
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .tab {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px;
+    line-height: 30px;
+    font-weight: normal;
+    color: #999;
+    background: #fcfcfc;
+    border: solid #ddd;
+    border-width: 1px 1px 0;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .tab:active {
+    padding-bottom: 0;
+    bottom: auto;
+  }
+
+  .tab + .tab {
+    margin-right: -1px;
+  }
+
+  .tab.active {
+    bottom: -1px;
+    margin-top: -2px;
+    padding-bottom: 2px;
+    line-height: 34px;
+    font-weight: bold;
+    color: #555;
+    background: white;
+    border-top: solid #4cc8f1 3px;
+  }
+
+
+  .tab-link {
+    display: block;
+    min-width: 60px;
+    padding: 0 10px;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .tabList {
+    display: block;
+    padding-top: 46px;
+  }
+
+  .tablist.active {
+    display: block;
+  }
+
+  /*.tabList:last-of-type {
+    display: block;
+  }*/
+
+  .tabList.active {
+    display: block;
+  }
+
+  .tabList li {
+    border-top: 1px solid #e8e8e8;
+    list-style-type: none;
+  }
+
+
+  pre {
+    margin: 0 auto !important;
+    margin-bottom: 10% !important;
+    cursor: pointer;
+    font-size: .85em;
+    width: 500px;
+    max-height: 400px;
+    transition: max-height 2s ease, width 1s ease;
+  }
+
+  pre.expanded {
+    width: 95%;
+    max-height: 2000px;
+  }
+
+  hr {
+      margin-bottom: 4%;
+      border: 0;
+      height: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  hr.sectionTitle {
+      height: 30px;
+      border-style: solid;
+      border-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+  }
+  hr.sectionTitle:before { /* Not really supposed to work, but does */
+      display: block;
+      content: "";
+      height: 30px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+  }
+
+
 
 

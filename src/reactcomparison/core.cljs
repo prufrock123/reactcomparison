@@ -165,19 +165,23 @@
          ]
   })
 
+  (defn- click-tab [js-evt value]
+    (.preventDefault js-evt)
+    (swap! application-state-atom assoc :active-tab value))
+
   (sablono/defhtml Tabs [active-tab]
     [:ul.tabs
       [:li#managers
         {:class (str "tab" (when (= active-tab "managers") " active"))
-         :on-click #(swap! application-state-atom assoc :active-tab "managers")}
+         :on-click #(click-tab %1 "managers")}
         [:a.tab-link {:href "#managers"} "Managers"]]
       [:li#designers 
         {:class (str "tab" (when (=  active-tab "designers") " active"))
-         :on-click #(swap! application-state-atom assoc :active-tab "designers")}
+         :on-click #(click-tab %1 "designers")}
         [:a.tab-link {:href "#designers"} "Designers"]]
       [:li#developers
         {:class (str "tab" (when (=  active-tab "developers") " active"))
-         :on-click #(swap! application-state-atom assoc :active-tab "developers")}
+         :on-click #(click-tab %1 "developers")}
           [:a.tab-link {:href "#developers"} "Developers"]]])
 
   (sablono/defhtml TabList [active-tab]
@@ -310,13 +314,55 @@
   (quiescent/defcomponent RootComponent [state]
     (sablono/html
       [:div
-        [:h1 {:class "title"} "CLJS Version"]
-        (CommentBox commentData)
-        (DivExample)
-        (HeaderExample)
-        (LikeButton state)
-        (TabsExample state)
-        (TempCalcContainer state)]))
+        ; [:h1 {:class "title"} "CLJS"]
+
+        [:div {:class "componentCLJS"
+               :id ""}
+                 [:hr]
+        [:h4 "Comment Component"]
+        [:hr]
+        (CommentBox commentData)]
+
+
+        [:div {:class "componentCLJS"
+               :id ""}
+        [:hr]
+        [:h4 "Simple Div Component"]
+        [:hr]               
+        (DivExample)]
+
+
+        [:div {:class "componentCLJS"
+               :id ""}        
+        [:hr]
+        [:h4 "Header Component"]
+        [:hr]             
+        (HeaderExample)]
+
+
+        [:div {:class "componentCLJS"
+               :id ""}
+        [:hr]
+        [:h4 "Like Button Component"]
+        [:hr]     
+        (LikeButton state)]
+
+
+        [:div {:class "componentCLJS"
+               :id ""}
+        [:hr]
+        [:h4 "Tab Component"]
+        [:hr]            
+        (TabsExample state)]
+
+
+        [:div {:class "componentCLJS"
+               :id ""}
+        [:hr]
+        [:h4 "Temp Calc Component"]
+        [:hr]              
+        (TempCalcContainer state)]
+        ]))
 
 
 ;;------------------------------------------------------------------------------
