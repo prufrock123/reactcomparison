@@ -200,9 +200,9 @@
       var rawMarkup = converter.makeHtml(this.props.children.toString());
       return (
         <div className="comment">
-          <h2 className="commentAuthor">
+          <h5 className="commentAuthor">
             {this.props.author}
-          </h2>
+          </h5>
           <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
         </div>
       );
@@ -258,7 +258,7 @@
     render: function() {
       return (
         <div className="commentBox example">
-          <h1>Comments JSX version</h1>
+          <h3>Comments</h3>
           <CommentList data={this.state.data} />
           <CommentForm onCommentSubmit={this.handleCommentSubmit} />
         </div>
@@ -448,34 +448,6 @@
 // Root Component
 //------------------------------------------------------------------------------
 
-// var testObject = {
-
-//   willBeLikeButton: function() {
-//     return React.createClass({
-//             getInitialState: function() {
-//               return {liked: false};
-//             },
-//             handleClick: function(event) {
-//               this.setState({liked: !this.state.liked});
-//             },
-//             render: function() {
-//               var text = this.state.liked ? 'like' : 'haven\'t liked';
-//               return (
-//                   <p onClick={this.handleClick}>
-//                     You {text} this. Click to toggle.
-//                   </p>
-//               );
-//             }
-//           })
-//   },
-
-//   willBeSnippet: function() {
-//     return String(this.willBeLikeButton);
-//   }    
-// }
-
-// var LikeButton = this.testObject.willBeLikeButton();
-
 
   var RootComponent = React.createClass({
     render: function() {
@@ -491,26 +463,55 @@
 
       return (
         <div>
+          <h1 className="title">JSX version</h1>
+          <hr className="top"></hr>
           <CommentBox url="comments.json" pollInterval={2000} />
+          
+          <hr ></hr>
+          <h4>Comment Component</h4>          
+          <hr/>
           <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: commentSnippet}}></code></pre>
-
+          
+          
+          <hr ></hr>
+          <h4>Simple Div Component</h4>
+          <hr/>
           <DivExample />
           <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: simpleDivSnippet}}></code></pre>
-
+          
+          
+          <hr ></hr>
+          <h4>Header Component</h4>
+          <hr/>
           <HeaderExample />
           <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: headersSnippet}}></code></pre>
-
+          
+          
+          <hr ></hr>
+          <h4>Like Button Component</h4>
+          <hr/>
           <LikeButton />
           <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: likeButtonSnippet}}></code></pre>
-    
+                    
+            
+          <hr ></hr>
+          <h4>Tab Component</h4>  
+          <hr/>
           <TabsExample tabData={tabData} />
           <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: tabsSnippet}}></code></pre>
-
+          
+          
+          <hr ></hr>
+          <h4>Counter Component</h4>
+          <hr/>
           <TimeCounterContainer />
-          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: timeCounterSnippet}}></code></pre>          
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: timeCounterSnippet}}></code></pre>
+                    
+
         </div>
       );
-    }
+    <hr/>}
+
   });
 
 //------------------------------------------------------------------------------
@@ -522,92 +523,6 @@
     <RootComponent />,
     document.getElementById('contentJSX')
   )
-
-
-
-
-
-
-
-
-// var codeSnip = function() {
-//   $('#codeSnip').append(
-//     "<code class='language-jsx'>
-//       var LikeButton = React.createClass({
-//         getInitialState: function() {
-//           return {liked: false};
-//         },
-//         handleClick: function(event) {
-//           this.setState({liked: !this.state.liked});
-//         },
-//         render: function() {
-//           var text = this.state.liked ? 'like' : 'haven\'t liked';
-//           return (
-//             <p onClick={this.handleClick}>
-//               You {text} this. Click to toggle.
-//             </p>
-//           );
-//         }
-//       });
-//     </code>"
-//   )
-// }
-
-// var codeSnip = function() {
-//   $('#codeSnip').html(
-//     "<code class='language-jsx'>" +
-//       "var LikeButton = React.createClass({" +
-//         "getInitialState: function() {" +
-//           "return {liked: false};" +
-//         "}," +
-//         "handleClick: function(event) {" +
-//           "this.setState({liked: !this.state.liked});" +
-//         "}," +
-//         "render: function() {" +
-//           "var text = this.state.liked ? 'like' : 'haven\'t liked';" +
-//           "return (" +
-//             "<p onClick={this.handleClick}>" +
-//               "You {text} this. Click to toggle." +
-//             "</p>" +
-//           ");" +
-//         "}" +
-//       "});" +
-//     "</code>"
-//   )
-// }
-
-// codeSnip();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // willBeLikeButton:  "React.createClass({" + "\n" +
-  //           "getInitialState: function() {" + "\n" +
-  //             "return {liked: false};" + "\n" +
-  //           "}," + "\n" +
-  //           "handleClick: function(event) {" + "\n" +
-  //             "this.setState({liked: !this.state.liked});" + "\n" +
-  //           "}," + "\n" +
-  //           "render: function() {" + "\n" +
-  //             "var text = this.state.liked ? 'like' : 'haven\'t liked';" + "\n" +
-  //             "return (" + "\n" +
-  //                 "<p onClick={this.handleClick}>" + "\n" +
-  //                   "You {text} this. Click to toggle." + "\n" +
-  //                 "</p>" + "\n" +
-  //             ");" + "\n" +
-  //           "}" + "\n" +
-  //         "})" 
 
 
 

@@ -104,7 +104,6 @@
 
   (sablono/defhtml CommentBox [the-atom]
     [:div.CommentBox.example
-      [:h1 "Comments CLJS version"]
       (CommentList the-atom)
       (CommentForm)
     ]
@@ -311,6 +310,7 @@
   (quiescent/defcomponent RootComponent [state]
     (sablono/html
       [:div
+        [:h1 {:class "title"} "CLJS Version"]
         (CommentBox commentData)
         (DivExample)
         (HeaderExample)
