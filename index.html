@@ -19,127 +19,6 @@
 
 
 
-<!-- <pre><code class="language-jsx">
-
-  var tabData = {
-    managers: [
-        {dude: "President Business",
-         followers: "1 billion"},
-        {dude: "Dilbert",
-         followers: "3"},
-        {dude: "Gordon Gecko",
-         followers: "money"}
-      ],
-    designers: [
-        {dude: "testguy",
-         followers: "100"},
-        {dude: "Andy Warhol",
-         followers: "200"},
-        {dude: "Kim Kardash",
-         followers: "25"}
-      ],
-    developers: [
-        {dude: "Travis",
-         followers: "1 mil"},
-        {dude: "Hayley",
-         followers: "1 mil"},
-        {dude: "Scotty",
-         followers: "1 mil"}
-      ]
-  }
-
-  var TabContainer = React.createClass({
-    render: function() {
-      var tabs = [];
-      for (var prop in this.props.tabData){
-        tabs.push(
-          &lt;Tab 
-          class={prop} 
-          activeTab={this.props.activeTab} 
-          clickActiveTab={this.props.clickActiveTab} 
-          /&gt; 
-        )
-      }
-      return (
-        &lt;ul className="tabs"&gt;
-          {tabs}
-        &lt;/ul&gt;
-      )
-    }
-  })
-
-  var Tab = React.createClass({
-    render: function() {
-      var tabClass = "tab";
-      var tabClass = (this.props.activeTab == this.props.class) ?
-          "tab active" :
-          "tab"
-      var tabHref = "#" + this.props.class;
-      return (
-        &lt;li className={tabClass} onClick={this.props.clickActiveTab}&gt;
-          &lt;a className="tab-link" href={tabHref}&gt;{this.props.class}&lt;/a&gt;
-        &lt;/li&gt;
-      )
-    }
-  })
-
-  var TabListContainer = React.createClass({
-    render: function() {
-      var tabListData = [];
-      var tabListToRender = this.props.activeTab
-      this.props.tabData[tabListToRender].forEach(function (dataElement) {
-        tabListData.push(&lt;TabListLink tabListSubData={dataElement} /&gt;)
-      })
-      return (
-        &lt;ol className="tabList"&gt;
-          {tabListData}
-        &lt;/ol&gt;
-      )
-    }
-  })
-
-  var TabListLink = React.createClass({
-    render: function() {
-      return (
-        &lt;li&gt;
-          &lt;a className="tab-list-link"&gt;
-            &lt;img src="http://www.gravatar.com/avatar/47?f=y&amp;s=64&amp;d=identicon"/&gt;
-            {this.props.tabListSubData.dude}{' '}
-            &lt;span&gt;Followers: {this.props.tabListSubData.followers}&lt;/span&gt;
-          &lt;/a&gt;
-        &lt;/li&gt;
-      )
-    }
-  })
-
-  var TabsExample = React.createClass({
-    getInitialState: function() {
-      return {
-        activeTab: "managers"
-      }
-    },
-
-    handleClick: function(event) {
-      event.preventDefault();
-      this.setState({activeTab: event.target.innerText})
-    },
-
-    render: function() {
-      var activeTab = this.state.activeTab
-      return (
-        &lt;div className="tabsExample"&gt;
-          &lt;TabContainer 
-            tabData={this.props.tabData} 
-            activeTab={activeTab} 
-            clickActiveTab={this.handleClick} /&gt;
-          &lt;TabListContainer 
-            tabData={this.props.tabData}
-            activeTab={activeTab} /&gt;
-        &lt;/div&gt;
-      )
-    }
-  })
-</code></pre> -->
 
 <!-- <pre><code class="language-clojure">
   (sablono/defhtml HeaderExample []
@@ -169,35 +48,459 @@
 </code></pre>
  -->
 
-<div class="hiddenCode">
-  <pre><code class="language-jsx" id="test">
-    var LikeButton = React.createClass({
-      getInitialState: function() {
-        return {liked: false};
-      },
-      handleClick: function(event) {
-        this.setState({liked: !this.state.liked});
-      },
-      render: function() {
-        var text = this.state.liked ? 'like' : 'haven\'t liked';
-        return (
-         &lt;p onClick={this.handleClick}&gt;
-            You {text} this. Click to toggle.
-          &lt;/p&gt;
-        );
-      }
+<div class="hiddenCode" id="hiddenJSXCode">
+  <pre><code class="language-jsx" id="likeButton">
+var LikeButton = React.createClass({
+  getInitialState: function() {
+    return {liked: false};
+  },
+  handleClick: function(event) {
+    this.setState({liked: !this.state.liked});
+  },
+  render: function() {
+    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    return (
+     &lt;p onClick={this.handleClick}&gt;
+        You {text} this. Click to toggle.
+      &lt;/p&gt;
+    );
+  }
+});
+  </code></pre>
+
+  <pre><code class="language-jsx" id="timeCounter">
+var TimeCounter = React.createClass({
+
+  startTime: new Date().getTime(),
+
+  getInitialState: function() {
+    return {newTime: new Date().getTime()};
+  },
+
+  setMyState: function() {
+    this.setState({newTime: new Date().getTime()});
+  },
+
+  componentDidMount: function() {
+    setInterval(this.setMyState, 50);
+  },
+
+  render: function() {
+    var elapsed = Math.round((this.state.newTime - this.startTime) / 100);
+    var seconds = elapsed / 10 + (elapsed % 10 ? '' : '.0' );
+    var message =
+      'React has been successfully running for ' + seconds + ' seconds.';
+
+    return &lt;p&gt;{message}&lt;/p&gt;;
+  }
+});
+
+var CustomTimeCounter = React.createClass({
+
+  startTime: new Date().getTime(),
+
+  getInitialState: function() {
+    return {newTime: new Date().getTime()};
+  },
+
+  setMyState: function() {
+    this.setState({newTime: new Date().getTime()});
+  },
+
+  componentDidMount: function() {
+    setInterval(this.props.updateTimeState, 50);
+  },
+
+  timeUnitCheck: function(timeUnitType) {
+    var time = "error, boy you're dumb.";
+
+    switch (timeUnitType) {
+      case "Milliseconds":
+      // console.log(this.props.newTime)
+        time = (this.props.newTime - this.startTime);
+        break;
+      case "Centiseconds":
+        time = Math.round((this.props.newTime - this.startTime) / 10);
+        break;
+      case "Deciseconds":
+        time = Math.round((this.props.newTime - this.startTime) / 100);
+        break;
+      case "Seconds":
+        time = Math.round((this.props.newTime - this.startTime) / 1000);
+        break;
+      case "Super Seconds":
+        time = Math.floor((this.props.newTime - this.startTime) / 10000);
+        break;
+      case "Supercilious Seconds":
+        time = Math.floor((this.props.newTime - this.startTime) / 100000);
+        break;
+      case "Suspiciously Sacrosant Seconds":
+        time = Math.floor((this.props.newTime - this.startTime) / 1000000);
+        break;
+    }
+    return time;
+  },
+
+  render: function() {
+    var timeConverted = this.timeUnitCheck(this.props.timeUnit);
+    var message =
+      "React has been successfully running for: " + timeConverted + " " +this.props.timeUnit;
+    return (
+      &lt;div&gt;
+        &lt;p&gt;{message}&lt;/p&gt;
+      &lt;/div&gt;
+    )
+  }
+});
+
+var TimeCounterForm = React.createClass({
+  handleInput: function(e) {
+    e.preventDefault();
+    var inputValue = this.refs.timeUnit.getDOMNode().value.trim();
+    if (!inputValue) {
+      return;
+    }
+    this.props.onFormInput(inputValue)
+  },
+
+  render: function() {
+    return (
+      &lt;select value={this.props.timeUnit} onChange={this.handleInput} ref="timeUnit"&gt;
+        &lt;option value="Milliseconds"&gt;Milliseconds&lt;/option&gt;
+        &lt;option value="Centiseconds"&gt;Centiseconds&lt;/option&gt;
+        &lt;option value="Deciseconds"&gt;Deciseconds&lt;/option&gt;
+        &lt;option value="Seconds"&gt;Seconds&lt;/option&gt;
+        &lt;option value="Super Seconds"&gt;Super Seconds&lt;/option&gt;
+        &lt;option value="Supercilious Seconds"&gt;Supercilious Seconds&lt;/option&gt;
+        &lt;option value="Suspiciously Sacrosant Seconds"&gt;Suspiciously Sacrosant Seconds&lt;/option&gt;
+      &lt;/select&gt;
+    )
+  }
+})
+
+var TimeCounterContainer = React.createClass({
+  
+  getInitialState: function() {
+    return {timeUnit: "Milliseconds",
+            newTime: new Date().getTime()};
+  },
+
+  updateTheIntervalState: function(value) {
+    if (!value) {
+      this.setState({newTime:new Date().getTime()});
+    } else {
+      this.setState({timeUnit: value});
+    }
+  },
+
+  render: function() {
+    return (
+      &lt;div className="Counter example"&gt;
+        &lt;TimeCounter /&gt;
+        &lt;CustomTimeCounter updateTimeState={this.updateTheIntervalState} timeUnit={this.state.timeUnit} newTime={this.state.newTime}/&gt;
+        &lt;TimeCounterForm onFormInput={this.updateTheIntervalState} /&gt;
+      &lt;/div&gt;
+     )
+  }
+})
+  </code></pre>
+
+  <pre><code class="language-jsx" id="comment">
+// ------------------------------------------------------
+// commentList
+// ------------------------------------------------------
+
+var CommentList = React.createClass({
+  render: function() {
+    var commentNodes = this.props.data.map(function (comment) {
+      return (
+        &lt;Comment author={comment.author}&gt;
+          {comment.text}
+        &lt;/Comment&gt;
+      );
     });
+    return (
+      &lt;div className="commentList"&gt;
+        {commentNodes}
+      &lt;/div&gt;
+    );
+  }
+});
+
+// ------------------------------------------------------
+// commentForm
+// ------------------------------------------------------
+
+var CommentForm = React.createClass({
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var author = this.refs.author.getDOMNode().value.trim();
+    var text = this.refs.text.getDOMNode().value.trim();
+    if (!text || !author) {
+      return;
+    }
+    this.props.onCommentSubmit({author: author, text: text});
+    this.refs.author.getDOMNode().value = '';
+    this.refs.text.getDOMNode().value = '';
+  },
+  render: function() {
+    return (
+      &lt;form className="commentForm" onSubmit={this.handleSubmit}&gt;
+        &lt;input type="text" placeholder="Your name" ref="author"/&gt;
+        &lt;input type="text" placeholder="Say something..." ref="text" /&gt;
+        &lt;input type="submit" value="Post" /&gt;
+      &lt;/form&gt;
+    );
+  }
+});
+// ------------------------------------------------------
+// comment
+// ------------------------------------------------------
+
+var converter = new Showdown.converter();
+var Comment = React.createClass({
+  render: function() {
+    var rawMarkup = converter.makeHtml(this.props.children.toString());
+    return (
+      &lt;div className="comment"&gt;
+        &lt;h2 className="commentAuthor"&gt;
+          {this.props.author}
+        &lt;/h2&gt;
+        &lt;span dangerouslySetInnerHTML={{__html: rawMarkup}} /&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+
+// ------------------------------------------------------
+// full commentBox
+// ------------------------------------------------------
+
+var data = [
+  {author: "Pete Hunt", text: "This is one comment"},
+  {author: "Jordan Walke", text: "This is *another* comment"}
+];
+
+var CommentBox = React.createClass({
+  loadCommentsFromServer: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });        
+  },
+  handleCommentSubmit: function(comment) {
+    var comments = this.state.data;
+    var newComments = comments.concat([comment]);
+    this.setState({data: newComments});
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: comment,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+  getInitialState: function() {
+    return {data: []};
+  },
+  componentDidMount: function() {
+    this.loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, this.props.pollInterval)
+  },
+  render: function() {
+    return (
+      &lt;div className="commentBox example"&gt;
+        &lt;h1&gt;Comments JSX version&lt;/h1&gt;
+        &lt;CommentList data={this.state.data} /&gt;
+        &lt;CommentForm onCommentSubmit={this.handleCommentSubmit} /&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+</code></pre>
+
+<pre><code class="language-jsx" id="simpleDiv">
+var DivExample = React.createClass({
+  render: function() {
+    return (
+      &lt;div className="divExample example"&gt;
+        &lt;p&gt;here is a sample div with a nested p tag&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+  </code></pre>
+
+  <pre><code class="language-jsx" id="headers">
+var HeaderExample = React.createClass({
+  render: function() {
+    return (
+      &lt;div className="headerExample example"&gt;
+        &lt;h1&gt;Header 1&lt;/h1&gt;
+        &lt;h2&gt;Header 2&lt;/h2&gt;
+        &lt;h3&gt;Header 3&lt;/h3&gt;
+        &lt;h4&gt;Header 4&lt;/h4&gt;
+        &lt;h5&gt;Header 5&lt;/h5&gt;
+        &lt;h6&gt;Header 6&lt;/h6&gt;
+      &lt;/div&gt;
+    )
+  }
+})
+  </code></pre>
+
+  <pre><code class="language-jsx" id="tabs">
+var tabData = {
+  managers: [
+      {dude: "President Business",
+       followers: "1 billion"},
+      {dude: "Dilbert",
+       followers: "3"},
+      {dude: "Gordon Gecko",
+       followers: "money"}
+    ],
+  designers: [
+      {dude: "testguy",
+       followers: "100"},
+      {dude: "Andy Warhol",
+       followers: "200"},
+      {dude: "Kim Kardash",
+       followers: "25"}
+    ],
+  developers: [
+      {dude: "Travis",
+       followers: "1 mil"},
+      {dude: "Hayley",
+       followers: "1 mil"},
+      {dude: "Scotty",
+       followers: "1 mil"}
+    ]
+}
+
+var TabContainer = React.createClass({
+  render: function() {
+    var tabs = [];
+    for (var prop in this.props.tabData){
+      tabs.push(
+        &lt;Tab 
+        class={prop} 
+        activeTab={this.props.activeTab} 
+        clickActiveTab={this.props.clickActiveTab} /&gt; )
+    }
+    return (
+      &lt;ul className="tabs"&gt;
+        {tabs}
+      &lt;/ul&gt;
+    )
+  }
+})
+
+var Tab = React.createClass({
+  render: function() {
+    var tabClass = "tab";
+    var tabClass = (this.props.activeTab == this.props.class) ?
+        "tab active" :
+        "tab"
+    var tabHref = "#" + this.props.class;
+    return (
+      &lt;li className={tabClass} onClick={this.props.clickActiveTab}&gt;
+        &lt;a className="tab-link" href={tabHref}&gt;{this.props.class}&lt;/a&gt;
+      &lt;/li&gt;
+    )
+  }
+})
+
+var TabListContainer = React.createClass({
+  render: function() {
+    var tabListData = [];
+    var tabListToRender = this.props.activeTab
+    this.props.tabData[tabListToRender].forEach(function (dataElement) {
+      tabListData.push(&lt;TabListLink tabListSubData={dataElement} /&gt;)
+    })
+    return (
+      &lt;ol className="tabList"&gt;
+        {tabListData}
+      &lt;/ol&gt;
+    )
+  }
+})
+
+var TabListLink = React.createClass({
+  render: function() {
+    return (
+      &lt;li&gt;
+        &lt;a className="tab-list-link"&gt;
+          &lt;img src="http://www.gravatar.com/avatar/47?f=y&amp;s=64&amp;d=identicon"/&gt;
+          {this.props.tabListSubData.dude}{' '}
+          &lt;span&gt;Followers: {this.props.tabListSubData.followers}&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+    )
+  }
+})
+
+var TabsExample = React.createClass({
+  getInitialState: function() {
+    return {
+      activeTab: "managers"
+    }
+  },
+
+  handleClick: function(event) {
+    event.preventDefault();
+    this.setState({activeTab: event.target.innerText})
+  },
+
+  render: function() {
+    var activeTab = this.state.activeTab
+    return (
+      &lt;div className="tabsExample"&gt;
+        &lt;TabContainer 
+          tabData={this.props.tabData} 
+          activeTab={activeTab} 
+          clickActiveTab={this.handleClick} /&gt;
+        &lt;TabListContainer 
+          tabData={this.props.tabData}
+          activeTab={activeTab} /&gt;
+      &lt;/div&gt;
+    )
+  }
+})
   </code></pre>
 
 </div>
 
+<div class="hiddenCode" id="hiddenCLJSCode">
+
+</div>
     <script type="text/jsx;harmony=true" src="./reactJSX.js"></script>
     <script src="out/reactcomparison.js" type="text/javascript"></script>
 
+
+    <script type="text/javascript">
+    $(window).load(function() {
+      $('pre').on('click', function(){
+        $(this).toggleClass('expanded');
+        // $(this).animate({
+        //   height: "toggle"
+        // }, "slow");
+      })
+    });
+    </script>
   </body>
 </html>
 
-<script type="text/javascript"></script>
+
 
 
 

@@ -77,7 +77,6 @@
     },
 
     render: function() {
-      // console.log(this.timeUnitCheck(this.props.timeUnit))
       var timeConverted = this.timeUnitCheck(this.props.timeUnit);
       var message =
         "React has been successfully running for: " + timeConverted + " " +this.props.timeUnit;
@@ -101,8 +100,6 @@
 
     render: function() {
       return (
-        // <input type="text" placeholder="enter a millisecond interval" ref="interval" onChange={this.handleInput} />
-
         <select value={this.props.timeUnit} onChange={this.handleInput} ref="timeUnit">
           <option value="Milliseconds">Milliseconds</option>
           <option value="Centiseconds">Centiseconds</option>
@@ -132,9 +129,8 @@
     },
 
     render: function() {
-      // console.log(this.state.timeUnit);
       return (
-        <div className="Counter example">
+        <div className="Counter">
           <TimeCounter />
           <CustomTimeCounter updateTimeState={this.updateTheIntervalState} timeUnit={this.state.timeUnit} newTime={this.state.newTime}/>
           <TimeCounterForm onFormInput={this.updateTheIntervalState} />
@@ -308,26 +304,22 @@
 // Simple LikeButton Component
 //------------------------------------------------------------------------------
 
-// var LikeButton = React.createClass({
-//     getInitialState: function() {
-//       return {liked: false};
-//     },
-//     handleClick: function(event) {
-//       this.setState({liked: !this.state.liked});
-//     },
-//     render: function() {
-//       var test = LikeButton
-//       var text = this.state.liked ? 'like' : 'haven\'t liked';
-//       return (
-//           <p onClick={this.handleClick}>
-//             You {text} this. Click to toggle.
-//           </p>
-//       );
-//     }
-//   });
-
-
-
+  var LikeButton = React.createClass({
+    getInitialState: function() {
+      return {liked: false};
+    },
+    handleClick: function(event) {
+      this.setState({liked: !this.state.liked});
+    },
+    render: function() {
+      var text = this.state.liked ? 'like' : 'haven\'t liked';
+      return (
+          <p onClick={this.handleClick}>
+            You {text} this. Click to toggle.
+          </p>
+      );
+    }
+  });
 
 
 //------------------------------------------------------------------------------
@@ -456,62 +448,66 @@
 // Root Component
 //------------------------------------------------------------------------------
 
-var testObject = {
+// var testObject = {
 
-  willBeLikeButton: function() {
-    return React.createClass({
-            getInitialState: function() {
-              return {liked: false};
-            },
-            handleClick: function(event) {
-              this.setState({liked: !this.state.liked});
-            },
-            render: function() {
-              var text = this.state.liked ? 'like' : 'haven\'t liked';
-              return (
-                  <p onClick={this.handleClick}>
-                    You {text} this. Click to toggle.
-                  </p>
-              );
-            }
-          })
-  },
+//   willBeLikeButton: function() {
+//     return React.createClass({
+//             getInitialState: function() {
+//               return {liked: false};
+//             },
+//             handleClick: function(event) {
+//               this.setState({liked: !this.state.liked});
+//             },
+//             render: function() {
+//               var text = this.state.liked ? 'like' : 'haven\'t liked';
+//               return (
+//                   <p onClick={this.handleClick}>
+//                     You {text} this. Click to toggle.
+//                   </p>
+//               );
+//             }
+//           })
+//   },
 
-  willBeSnippet: function() {
-    return String(this.willBeLikeButton);
-  }
+//   willBeSnippet: function() {
+//     return String(this.willBeLikeButton);
+//   }    
+// }
 
-
-        
-}
-
-var LikeButton = this.testObject.willBeLikeButton();
-
+// var LikeButton = this.testObject.willBeLikeButton();
 
 
   var RootComponent = React.createClass({
     render: function() {
 
-      var iBelieve = String('var LikeButton = ' + testObject.willBeLikeButton.valueOf())
-      var maybe = test.innerText
-      // var hope = Prism.highlight(test.innerText, Prism.languages.jsx);
-      var hope = Prism.highlight(iBelieve, Prism.languages.jsx);
+      var commentSnippet = Prism.highlight(comment.innerText, Prism.languages.jsx);
+      var simpleDivSnippet = Prism.highlight(simpleDiv.innerText, Prism.languages.jsx);
+      var headersSnippet = Prism.highlight(headers.innerText, Prism.languages.jsx);
+      var likeButtonSnippet = Prism.highlight(likeButton.innerText, Prism.languages.jsx);
+      var tabsSnippet = Prism.highlight(tabs.innerText, Prism.languages.jsx);
+      var timeCounterSnippet = Prism.highlight(timeCounter.innerText, Prism.languages.jsx)
 
 
-      function createMarkup() {
-        return {__html: <script> maybe </script>};
-      };
+
       return (
         <div>
           <CommentBox url="comments.json" pollInterval={2000} />
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: commentSnippet}}></code></pre>
+
           <DivExample />
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: simpleDivSnippet}}></code></pre>
+
           <HeaderExample />
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: headersSnippet}}></code></pre>
+
           <LikeButton />
-          <pre className="language-jsx"><code className="language-jsx" id="reactHighlight" dangerouslySetInnerHTML={{__html: hope}}></code></pre>
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: likeButtonSnippet}}></code></pre>
     
           <TabsExample tabData={tabData} />
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: tabsSnippet}}></code></pre>
+
           <TimeCounterContainer />
-          <pre className="prettyprint">var testing = 'prettyprint'</pre>
+          <pre className="language-jsx"><code className="language-jsx" dangerouslySetInnerHTML={{__html: timeCounterSnippet}}></code></pre>          
         </div>
       );
     }
