@@ -13,7 +13,7 @@ window.onload = function() {
         initEvents: function() {
           var obj = this;
           obj.dd.on('click', function(event){
-            console.log($(this))
+            // console.log($(this))
             $(this).toggleClass('active')
             // $(this).toggleClass('active');
             // return false;
@@ -57,37 +57,37 @@ window.onload = function() {
 
 
   Path.map("#/commentComponent").enter(function(){
-      $('#commentComponent').addClass('active')
+      $('#commentComponent, #CLJScommentComponentRender').addClass('active')
     }).exit(function(){
-      $('#commentComponent').removeClass('active')
+      $('#commentComponent, #CLJScommentComponentRender').removeClass('active')
     })
 
 
   Path.map("#/simpleDivComponent").enter(function(){
-      $('#simpleDivComponent').addClass('active')
+      $('#simpleDivComponent, #CLJSsimpleDivComponentRender').addClass('active')
     }).exit(function(){
-      $('#simpleDivComponent').removeClass('active')
+      $('#simpleDivComponent, #CLJSsimpleDivComponentRender').removeClass('active')
     })
 
 
   Path.map("#/headerComponent").enter(function(){
-      $('#headerComponent').addClass('active')
+      $('#headerComponent, #CLJSheaderComponentRender').addClass('active')
     }).exit(function(){
-      $('#headerComponent').removeClass('active')
+      $('#headerComponent, #CLJSheaderComponentRender').removeClass('active')
     })
 
 
   Path.map("#/likeButtonComponent").enter(function(){
-      $('#likeButtonComponent').addClass('active')
+      $('#likeButtonComponent, #CLJSlikeButtonComponentRender').addClass('active')
     }).exit(function(){
-      $('#likeButtonComponent').removeClass('active')
+      $('#likeButtonComponent, #CLJSlikeButtonComponentRender').removeClass('active')
     })
 
 
   Path.map("#/tabComponent").enter(function(){
-      $('#tabComponent').addClass('active')
+      $('#tabComponent, #CLJStabComponentRender').addClass('active')
     }).exit(function(){
-      $('#tabComponent').removeClass('active')
+      $('#tabComponent, #CLJStabComponentRender').removeClass('active')
     })
 
 

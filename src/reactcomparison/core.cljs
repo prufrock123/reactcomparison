@@ -363,7 +363,7 @@
         ; [:h1 {:class "title"} "CLJS"]
 
         [:div {:class "componentCLJS"
-               :id ""}
+               :id "CLJScommentComponentRender"}
                  [:hr]
         [:h4 "Comment Component"]
         [:hr]
@@ -376,7 +376,7 @@
 
 
         [:div {:class "componentCLJS"
-               :id ""}
+               :id "CLJSsimpleDivComponentRender"}
         [:hr]
         [:h4 "Simple Div Component"]
         [:hr]               
@@ -388,7 +388,7 @@
 
 
         [:div {:class "componentCLJS"
-               :id ""}        
+               :id "CLJSheaderComponentRender"}        
         [:hr]
         [:h4 "Header Component"]
         [:hr]             
@@ -400,7 +400,7 @@
 
 
         [:div {:class "componentCLJS"
-               :id ""}
+               :id "CLJSlikeButtonComponentRender"}
         [:hr]
         [:h4 "Like Button Component"]
         [:hr]     
@@ -412,7 +412,7 @@
 
 
         [:div {:class "componentCLJS"
-               :id ""}
+               :id "CLJStabComponentRender"}
         [:hr]
         [:h4 "Tab Component"]
         [:hr]            
@@ -424,7 +424,7 @@
 
 
         [:div {:class "componentCLJS"
-               :id ""}
+               :id "CLJStempCalcComponentRender"}
         [:hr]
         [:h4 "Temp Calc Component"]
         [:hr]              
