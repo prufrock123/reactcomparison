@@ -13,7 +13,9 @@ window.onload = function() {
         initEvents: function() {
           var obj = this;
           obj.dd.on('click', function(event){
-            $(this).toggleClass('active');
+            console.log($(this))
+            $(this).toggleClass('active')
+            // $(this).toggleClass('active');
             // return false;
           });
 
@@ -54,46 +56,46 @@ window.onload = function() {
 // path.js code
 
 
-Path.map("#/commentComponent").enter(function(){
-    $('#commentComponent').addClass('active')
-  }).exit(function(){
-    $('#commentComponent').removeClass('active')
-  })
+  Path.map("#/commentComponent").enter(function(){
+      $('#commentComponent').addClass('active')
+    }).exit(function(){
+      $('#commentComponent').removeClass('active')
+    })
 
 
-Path.map("#/simpleDivComponent").enter(function(){
-    $('#simpleDivComponent').addClass('active')
-  }).exit(function(){
-    $('#simpleDivComponent').removeClass('active')
-  })
+  Path.map("#/simpleDivComponent").enter(function(){
+      $('#simpleDivComponent').addClass('active')
+    }).exit(function(){
+      $('#simpleDivComponent').removeClass('active')
+    })
 
 
-Path.map("#/headerComponent").enter(function(){
-    $('#headerComponent').addClass('active')
-  }).exit(function(){
-    $('#headerComponent').removeClass('active')
-  })
+  Path.map("#/headerComponent").enter(function(){
+      $('#headerComponent').addClass('active')
+    }).exit(function(){
+      $('#headerComponent').removeClass('active')
+    })
 
 
-Path.map("#/likeButtonComponent").enter(function(){
-    $('#likeButtonComponent').addClass('active')
-  }).exit(function(){
-    $('#likeButtonComponent').removeClass('active')
-  })
+  Path.map("#/likeButtonComponent").enter(function(){
+      $('#likeButtonComponent').addClass('active')
+    }).exit(function(){
+      $('#likeButtonComponent').removeClass('active')
+    })
 
 
-Path.map("#/tabComponent").enter(function(){
-    $('#tabComponent').addClass('active')
-  }).exit(function(){
-    $('#tabComponent').removeClass('active')
-  })
+  Path.map("#/tabComponent").enter(function(){
+      $('#tabComponent').addClass('active')
+    }).exit(function(){
+      $('#tabComponent').removeClass('active')
+    })
 
 
-Path.map("#/counterComponent").enter(function(){
-    $('#counterComponent').addClass('active')
-  }).exit(function(){
-    $('#counterComponent').removeClass('active')
-  })
+  Path.map("#/counterComponent").enter(function(){
+      $('#counterComponent').addClass('active')
+    }).exit(function(){
+      $('#counterComponent').removeClass('active')
+    })
 
 
 Path.root("#/");

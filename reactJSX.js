@@ -327,7 +327,7 @@
 
   var tabData = {
     managers: [
-        {dude: "President Business",
+        {dude: "Prez Biz",
          followers: "1 billion"},
         {dude: "Dilbert",
          followers: "3"},
@@ -335,7 +335,7 @@
          followers: "money"}
       ],
     designers: [
-        {dude: "testguy",
+        {dude: "test guy",
          followers: "100"},
         {dude: "Andy Warhol",
          followers: "200"},
@@ -405,7 +405,7 @@
       return (
         <li>
           <a className="tab-list-link">
-            <img src="http://www.gravatar.com/avatar/47?f=y&amp;s=64&amp;d=identicon"/>
+            <img src="http://placehold.it/60/9BC7DE/000000"/>
             {this.props.tabListSubData.dude}{' '}
             <span>Followers: {this.props.tabListSubData.followers}</span>
           </a>

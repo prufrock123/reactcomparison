@@ -311,7 +311,53 @@
 ;; Root Component
 ;;------------------------------------------------------------------------------
 
+(def prism-object
+  (aget js/window "Prism"))
+
+(def comment-component
+  (aget (by-id "CLJScommentComponent") "innerHTML"))
+
+(def simple-div-component
+  (aget (by-id "CLJSsimpleDivComponent") "innerHTML"))
+
+(def header-component
+  (aget (by-id "CLJSheaderComponent") "innerHTML"))
+
+(def like-button-component
+  (aget (by-id "CLJSlikeButtonComponent") "innerHTML"))
+
+(def tab-component
+  (aget (by-id "CLJStabComponent") "innerHTML"))
+
+(def temp-calc-component
+  (aget (by-id "CLJStempCalcComponent") "innerHTML"))
+
+;; SNIPPETS
+
+
+(def comment-component-snippet
+  (.highlight prism-object comment-component (aget js/window "Prism" "languages" "clojure")))
+
+(def simple-div-component-snippet
+  (.highlight prism-object simple-div-component (aget js/window "Prism" "languages" "clojure")))
+
+(def header-component-snippet
+  (.highlight prism-object header-component (aget js/window "Prism" "languages" "clojure")))
+
+(def like-button-component-snippet
+  (.highlight prism-object like-button-component (aget js/window "Prism" "languages" "clojure")))
+
+(def tab-component-snippet
+  (.highlight prism-object tab-component (aget js/window "Prism" "languages" "clojure")))
+
+(def temp-calc-component-snippet
+  (.highlight prism-object temp-calc-component (aget js/window "Prism" "languages" "clojure")))
+
+
+
+
   (quiescent/defcomponent RootComponent [state]
+
     (sablono/html
       [:div
         ; [:h1 {:class "title"} "CLJS"]
@@ -321,7 +367,12 @@
                  [:hr]
         [:h4 "Comment Component"]
         [:hr]
-        (CommentBox commentData)]
+        (CommentBox commentData)
+          [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html comment-component-snippet}}
+                  ]]]
+
 
 
         [:div {:class "componentCLJS"
@@ -329,7 +380,11 @@
         [:hr]
         [:h4 "Simple Div Component"]
         [:hr]               
-        (DivExample)]
+        (DivExample)
+          [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html simple-div-component-snippet}}
+                  ]]]
 
 
         [:div {:class "componentCLJS"
@@ -337,7 +392,11 @@
         [:hr]
         [:h4 "Header Component"]
         [:hr]             
-        (HeaderExample)]
+        (HeaderExample)
+          [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html header-component-snippet}}
+                  ]]]
 
 
         [:div {:class "componentCLJS"
@@ -345,7 +404,11 @@
         [:hr]
         [:h4 "Like Button Component"]
         [:hr]     
-        (LikeButton state)]
+        (LikeButton state)
+          [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html like-button-component-snippet}}
+                  ]]]
 
 
         [:div {:class "componentCLJS"
@@ -353,7 +416,11 @@
         [:hr]
         [:h4 "Tab Component"]
         [:hr]            
-        (TabsExample state)]
+        (TabsExample state)
+         [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html tab-component-snippet}}
+                  ]]]
 
 
         [:div {:class "componentCLJS"
@@ -361,7 +428,14 @@
         [:hr]
         [:h4 "Temp Calc Component"]
         [:hr]              
-        (TempCalcContainer state)]
+        (TempCalcContainer state)          
+          [:pre {:class "language-clojure"}
+          [:code {:class "language-clojure"
+                  :dangerouslySetInnerHTML {:__html temp-calc-component-snippet}}
+                  ]]]
+
+
+
         ]))
 
 
